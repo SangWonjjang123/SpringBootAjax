@@ -48,14 +48,21 @@ public class BoardServiceImpl implements BoardService {
 
    
    
+//   @Override
+//   public int count(String search) throws Exception {
+//      int count = memberMapper.count(search);
+//      return count;
+//      
+//   }
+//   
+//   
+   
+   
+
    @Override
-   public int count() throws Exception {
-      int count = memberMapper.count();
-      BoardVO vo = new BoardVO();
-      vo.setCnt(count);
-      System.out.println(vo.getCnt());
-      return count;
-      
-   }
+	public BoardVO sessionlv(String id) throws Exception {
+		return memberMapper.sessionlv(id);
+	}
+   
    
 }

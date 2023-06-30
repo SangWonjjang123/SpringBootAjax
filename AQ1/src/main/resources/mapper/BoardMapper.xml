@@ -19,11 +19,19 @@
 
    <select id="getLists"
       parameterType="com.example.demo.vo.BoardVO" resultType="com.example.demo.vo.BoardVO">
-      SELECT *
-      FROM HJ_BOARD JOIN USER ON HJ_BOARD.USER = USER.user
-      <if test="search != null">
+      SELECT *,
+      (select count(title) from hj_board  WHERE 1 = 1
+         AND ( HJ_BOARD.TITLE LIKE CONCAT('%', #{search}, '%') OR HJ_BOARD.DESCRIPTION LIKE CONCAT('%', #{search}, '%') or
+          HJ_BOARD.USER LIKE CONCAT('%', #{search}, '%')) ) as cnt
+      FROM HJ_BOARD JOIN member ON HJ_BOARD.USER = member.id
       WHERE 1 = 1
-         AND HJ_BOARD.TITLE LIKE CONCAT('%', #{search}, '%')
+      <if test="search != null">
+         AND
+         (
+         HJ_BOARD.TITLE LIKE CONCAT('%', #{search}, '%') or
+          HJ_BOARD.DESCRIPTION LIKE CONCAT('%', #{search}, '%') or
+          HJ_BOARD.USER LIKE CONCAT('%', #{search}, '%')
+         )
       </if>
        order by HJ_BOARD.REG_DT desc
       <if test="page != null">
@@ -34,23 +42,23 @@
    
    
    
+   
    <select id="count" resultType="int" parameterType="com.example.demo.vo.BoardVO">
  SELECT COUNT(HJ_BOARD.P_ID) as CNT
-      FROM HJ_BOARD JOIN USER ON HJ_BOARD.USER = USER.user
-       <if test="search != null">
+     FROM HJ_BOARD JOIN member ON HJ_BOARD.USER = member.id
+     <if test="search != null">
       WHERE 1 = 1
          AND HJ_BOARD.TITLE LIKE CONCAT('%', #{search}, '%')
       </if>
-       order by HJ_BOARD.REG_DT desc
    </select>
 
    <!-- insert -->
    <insert id="insert" parameterType="com.example.demo.vo.BoardVO">
       INSERT INTO HJ_BOARD (TITLE,
-      DESCRIPTION, REG_DT, TEXT_OPEN, ANSWER,
+      DESCRIPTION, REG_DT, TEXT_OPEN, 
       ADMIN_ANSWER, user)
       VALUES
-      (#{title},#{description},now(),'Y', #{answer},'N', 'c')
+      (#{title},#{description},now(),#{text_open}, #{admin_answer},#{user})
    </insert>
 
    <!-- delete -->
@@ -62,10 +70,12 @@
 
    <!-- update -->
    <update id="update" parameterType="com.example.demo.vo.BoardVO">
-      update hj_board set TITLE =
-      #{title}, DESCRIPTION = #{description},
-      REG_DT = now(), ANSWER =
-      #{answer},
+      update hj_board set 
+      TITLE = #{title},
+      DESCRIPTION = #{description},
+      REG_DT = now(), 
+      TEXT_OPEN = #{text_open},
+      ANSWER = #{answer},
       ADMIN_ANSWER = #{admin_answer}
       where P_ID = #{p_id}
    </update>
@@ -73,7 +83,7 @@
    <!-- ViewSelect -->
    <select id="view" parameterType="String"
       resultType="com.example.demo.vo.BoardVO">
-      select
+     select 
       HJ_BOARD.TITLE,
       HJ_BOARD.DESCRIPTION,
       HJ_BOARD.REG_DT,
@@ -81,10 +91,30 @@
       HJ_BOARD.ANSWER,
       HJ_BOARD.ADMIN_ANSWER,
       HJ_BOARD.P_ID,
-      user.user,
-      user.lv
-      from hj_board JOIN USER ON HJ_BOARD.USER = USER.user where P_ID = #{p_id}
+      HJ_BOARD.user,
+      member.auth as lv 
+      FROM HJ_BOARD JOIN member ON HJ_BOARD.USER = member.id where P_ID =#{p_id}
    </select>
+   
+   
+   
+   
+<select id="sessionlv" parameterType="String" resultType="com.example.demo.vo.BoardVO">
+    SELECT auth as sessionlv FROM member WHERE id = #{id}
+</select>
+
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
 
 
 

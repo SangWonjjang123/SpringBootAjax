@@ -24,11 +24,12 @@ public interface BoardMapper {
    //delete
    public void delete(BoardVO vo) throws Exception;
    
-   //max count
-   public int count() throws Exception;
+//   //max count
+//   public int count(String search) throws Exception;
    
    public BoardVO view(String id) throws Exception;
    
    
+   public BoardVO sessionlv(String id) throws Exception;
    
 }
