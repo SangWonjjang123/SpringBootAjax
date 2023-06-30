@@ -21,6 +21,10 @@
 	<br>
 	<br>
 	<br>
-	<strong>아직 회원이 아니시라면</strong> <a href="like.do">좋아요</a>
+	<strong><a href="/sangwonlist.do">리스트</a></strong>  <br>
+	<br>
+ 	<strong><a href="/sangwonview.do">보기</a></strong> <br>
+ 	<br>
+	<strong><a href="/sangwonwrite.do">쓰기</a></strong> <br>
 </body>
 </html>

@@ -221,11 +221,5 @@ public class BoardController {
     }
 
     
-    // 페이지 이동
-    @GetMapping("/like.do")
-    public ModelAndView icon(HttpServletRequest request, BoardVO vo,ModelAndView mav) throws Exception {
- 	   
- 	   
-       return mav;
-    }
+    
 }
