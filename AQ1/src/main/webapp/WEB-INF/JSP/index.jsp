@@ -26,5 +26,12 @@
  	<strong><a href="/sangwonview.do">보기</a></strong> <br>
  	<br>
 	<strong><a href="/sangwonwrite.do">쓰기</a></strong> <br>
+ 	<br>
+ 	<br>
+ 	<br>
+ 	<br>
+	<strong><a href="/mail.do">mail mail 기다려~</a></strong> <br>
+ 	<br>
+	<strong><a href="/image.do">이미지 이미지</a></strong> <br>
 </body>
 </html>

@@ -67,13 +67,13 @@ nhn.husky.EZCreator = new (function(){
 //			top.document.title = ((new Date())-window.STime);
 //			window.STime = new Date();
 			
-			try{
+		try{
 			
 				nEditorWidth = elIFrame.contentWindow.document.body.scrollWidth || "500px";
 				nEditorHeight = elIFrame.contentWindow.document.body.scrollHeight + 12;
 				elIFrame.style.width =  "100%";
-				elIFrame.style.height = nEditorHeight+ "px";
-				elIFrame.contentWindow.document.body.style.margin = "0";
+				/*ㅁelIFrame.style.height = nEditorHeight+ "px";
+				elIFrame.contentWindow.document.body.style.margin = "0";*/
 			}catch(e){
 				nhn.husky.EZCreator.hideBlocker(true);
 				elIFrame.style.border = "5px solid red";

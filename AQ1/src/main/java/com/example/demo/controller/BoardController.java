@@ -46,7 +46,7 @@ public class BoardController {
    @RequestMapping(value = "/boardnewwrite.do", method = RequestMethod.POST)
    public ModelAndView write(BoardVO vo, HttpServletRequest request, ModelAndView mav) throws Exception {
 
-      // 가져옴
+      // JSP에서 가져옴
       String a = request.getParameter("title");
       String b = request.getParameter("description");
       String c = request.getParameter("admin_answer");
@@ -75,6 +75,7 @@ public class BoardController {
 
       @RequestMapping("/updateaction.do")
       public ModelAndView modify(BoardVO vo, HttpServletRequest req, ModelAndView mav) throws Exception {
+    	  //jsp에 get으로 가져와서 Set으로 VO에 넣고   boardService.update(vo); 이걸로 해당 업데이트 쿼리문 실행
          vo.setTitle(req.getParameter("title"));
          vo.setDescription(req.getParameter("description"));
          vo.setAdmin_answer(req.getParameter("admin_answer"));

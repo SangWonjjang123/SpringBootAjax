@@ -263,7 +263,7 @@ $(document).ready(function() {
 <script type="text/javascript">
 
 
-//페이지 버튼
+/* //페이지 버튼
 function createPageButtons(totalPages) {
 	   // 버튼 그룹 요소를 가져
 	   var buttonGroup = $(".button-group");
@@ -288,14 +288,7 @@ function createPageButtons(totalPages) {
 	      // 버튼을 버튼 그룹에 추가(생성)
 	      buttonGroup.append(button);
 	   }
-	}
-
-
-// 페이지 버튼 생성
-var cnt = $('#countmax').val(); // 게시글 수
-console.log("cnt:"+cnt);
-var pageSize = 10; // 페이지당 보여줄 개수
-var totalPages = Math.ceil(cnt / pageSize); // 전체 페이지 수 계산
+	} */
 
 </script>
 </html>

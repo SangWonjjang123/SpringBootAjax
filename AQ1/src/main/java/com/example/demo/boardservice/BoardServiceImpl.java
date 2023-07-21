@@ -13,7 +13,6 @@ public class BoardServiceImpl implements BoardService {
 
    @Autowired 
    private BoardMapper memberMapper; // BoardMapper의 의존성 주입
-
    
    @Override
    public void insert(BoardVO vo) throws Exception {
@@ -30,35 +29,18 @@ public class BoardServiceImpl implements BoardService {
       memberMapper.delete(vo);
    }
    
-   
    @Override
    public List<BoardVO> getLists(BoardVO vo) throws Exception {
-      
       
       return memberMapper.getLists(vo);
       
    }
-   
    
    @Override
    public BoardVO view(String id) throws Exception {
       return memberMapper.view(id);
    }
    
-
-   
-   
-//   @Override
-//   public int count(String search) throws Exception {
-//      int count = memberMapper.count(search);
-//      return count;
-//      
-//   }
-//   
-//   
-   
-   
-
    @Override
 	public BoardVO sessionlv(String id) throws Exception {
 		return memberMapper.sessionlv(id);

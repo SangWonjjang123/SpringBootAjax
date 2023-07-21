@@ -1,7 +1,5 @@
 package com.example.demo.vo;
 
-import lombok.Data;
-
 public class MemberVO {
 
 	private String id;
